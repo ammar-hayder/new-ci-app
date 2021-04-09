@@ -1,15 +1,24 @@
+---
 resources:
-- name: resource-tutorial
-  type: git
-  source:
-    uri: https://github.com/ammar-hayder/new-ci-app.git
-    branch: main
-
+  - name: resource-tutorial
+    type: git
+    source:
+      uri: https://github.com/ammar-hayder/new-ci-app.git
+      branch: main
+  
 jobs:
-- name: job-hello-world
-  public: true
-  plan:
-  - get: resource-tutorial
-    trigger: true
-  - task: hello-world
-    file: resource-tutorial/ci/tasks/lint.yml
+  - name: job-hello-world
+    public: true
+    plan:
+      - get: resource-tutorial
+        trigger: true
+      - task: hello-world
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: node}
+          inputs:
+            - name: resource-tutorial
+          run:
+            path: resource-tutorial/ci/tasks/lint.sh
