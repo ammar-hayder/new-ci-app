@@ -1,5 +1,5 @@
 resources:
-- name: ci
+- name: resource-tutorial
   type: git
   source:
     uri: https://github.com/ammar-hayder/new-ci-app.git
@@ -9,7 +9,7 @@ jobs:
 - name: job-hello-world
   public: true
   plan:
-  - get: ci
+  - get: resource-tutorial
     trigger: true
   - task: hello-world
-    file: ci/tasks/lint.yml
+    file: resource-tutorial/ci/tasks/lint.yml
