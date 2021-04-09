@@ -1,5 +1,4 @@
 #!/bin/sh
 
-ls
 cd resource-tutorial
-ls
+npm run lint
