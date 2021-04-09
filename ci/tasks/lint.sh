@@ -1,6 +1,9 @@
 #!/bin/sh
 
-cd ../
-pwd
 ls
-npm run lint
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
