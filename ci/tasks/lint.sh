@@ -1,4 +1,6 @@
 #!/bin/sh
 
-cd ../../
+cd ../..
+pwd
+ls
 npm run lint
