@@ -41,6 +41,6 @@ jobs:
                 base_context: linting
                 status: failure
                 description: "Some linting checks failed"
-                comment_file: output/errors.txt
+                comment_file: errors.txt
               get_params:
                 skip_download: true
