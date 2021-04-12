@@ -22,3 +22,25 @@ jobs:
             - name: resource-tutorial
           run:
             path: resource-tutorial/ci/tasks/lint.sh
+        on_success:
+          do:
+            - put: update-pr-status
+              resource: resource-tutorial
+              params:
+                path: resource-tutorial
+                base_context: linting
+                status: success
+              get_params:
+                skip_download: true
+        on_failure:
+          do:
+            - put: update-pr-status
+              resource: resource-tutorial
+              params:
+                path: resource-tutorial
+                base_context: linting
+                status: failure
+                description: "Some linting checks failed"
+                comment_file: output/errors.txt
+              get_params:
+                skip_download: true
